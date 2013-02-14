@@ -1,8 +1,8 @@
 require "middleman-smusher"
 activate :directory_indexes
 activate :sprockets
+#activate :relative_assets
 
-set :url_root, "/" 
 ignore "javascripts/models/*"
 ignore "javascripts/views/*"
 ignore "javascripts/router*"
@@ -10,6 +10,7 @@ ignore "stylesheets/bootstrap*"
 
 configure :build do
   set :api_url, 'http://our-data.herokuapp.com'
+  set :http_prefix, "/our-data-middleman" 
   activate :minify_css
   activate :minify_javascript
   activate :automatic_image_sizes
@@ -19,6 +20,7 @@ end
 
 configure :development do
   set :api_url, "http://localhost:3000"
+  set :http_prefix, "/" 
   activate :livereload
 end
 
@@ -29,4 +31,5 @@ end
 
 activate :deploy do |deploy|
   deploy.method = :git
+  deploy.after_build = true
 end
