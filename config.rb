@@ -26,3 +26,7 @@ after_configuration do
   sprockets.append_path File.join(File.expand_path(File.dirname(__FILE__)), 'source/templates')
   ignore "templates/*"
 end
+
+activate :deploy do |deploy|
+  deploy.method = :git
+end
