@@ -1,0 +1,39 @@
+<h2><%= title %></h2>
+
+<p class="description"><%= description %>
+
+<div id="links">
+  <h3>Links</h3>
+  <ul>
+    <li><a href="<%= dataDictionary %>">Documentation</a></li>
+    <li>Endpoint: <a href="<%= accessURL %>"><%= accessURL %></a></li>
+    <li>Format: <% _.each( format.split(", "), function(tag) { %>
+          <a href="#formats/<%= tag %>"><%= tag %></a>
+        <% }); %>
+  </li>
+  </ul>
+</div>
+
+<div id="poc">
+  <h3>Point of Contact</h3>
+  <ul>
+    <li>Organization: <a href="#agencies/<%= organization %>"><%= organization %></a></li>
+    <li>Point of Contact: <a href="mailto:<%= mbox %>"><%= person %></a></li>
+  </ul>
+</div>
+
+<div id="status <% if (public) { %>public<% } %>">
+  <h3>Status</h3>
+  <% if (public) { %>
+    Public
+  <% } else { %>
+    Not Public
+  <% } %>
+</div>
+
+<div id="tags">
+  <h3>Tags</h3>
+  Tags: <% _.each( keywords.split(", "), function(tag) { %>
+    <a href="#tags/<%= tag %>"><%= tag %></a>, 
+  <% }); %>
+</div>
